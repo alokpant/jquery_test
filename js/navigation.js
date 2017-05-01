@@ -28,12 +28,26 @@ class Navigation {
     }
 
     ViewCart(){
+        $.ajax({
+            type          : "POST",
+            url           : localurl+'getCart.html',
+            contentType   : "application/x-www-form-urlencoded;"
+        }).done(function(response){
 
+            $("#load-container").html(response);
+        });
     }
 
 
     OrderWithQuote(){
+        $.ajax({
+            type          : "POST",
+            url           : localurl+'getQuoteOrder.html',
+            contentType   : "application/x-www-form-urlencoded;"
+        }).done(function(response){
 
+            $("#load-container").html(response);
+        });
     }
     
     ContactUs(){
