@@ -28,7 +28,8 @@ class Logs{
      * Deals with login, calls api returns back false for error, true for success
      */
 
-    LoginOnly(){
+    SignInOnly(){
+        console.log("testing login");
 
     }
 
@@ -44,7 +45,7 @@ class Logs{
      * Deals with new registration.
      */
 
-    NewRegistration(){
+    SignUpOnly(){
 
 
     }
