@@ -52,9 +52,11 @@
     <script src='./js/global_variables.js'></script>
     <script src='./js/search.js'></script>
     <script src='./js/logs.js'></script>
+    <script src='./js/navigation.js'></script>
     <script>
-        SearchAPI = new Search();
-        LogCalls = new Logs();
+        SearchAPI       = new Search();
+        LogCalls        = new Logs();
+        Navigation      = new Navigation();
     </script>
 
 
@@ -77,47 +79,22 @@
 <body>
 
 
-<div align="center">
-    <div>
+<div>
+    <div align="center">
         <div align='center' class="bg-primary" style="padding:50px;">
-            <a href="#" class="btn btn-default btn-lg" >
+            <a href="index.html" class="btn btn-default btn-lg" >
                 <img src='./img/rfcoax-logo.png' alt="RFCOAX INC" title='RFCOAX INC' width='200'/>
             </a>
             <div>&nbsp;</div>
         </div>
-
-        <div class="row whiteBack">
-            <div class="col-xs-6 padding" onclick="location.href='index.html'">
-                <i class="fa fa-home fa-5x" aria-hidden="true"></i>
-                <BR>
-                <h4>HOME</h4>
-            </div>
-            <div class="col-xs-6 ghostWhite padding" onclick="location.href='design-order.html'">
-                <i class="fa fa-cog fa-5x"></i><BR>
-                <h4>DESIGN/ORDER</h4>
-            </div>
-
-            <div class="col-xs-6 ghostWhite padding" onclick="location.href='order-with-quote.html'">
-                <i class="fa fa-pencil fa-5x"></i><BR>
-                <h4>QUOTE</h4>
-            </div>
-            <div class="col-xs-6 padding" onclick="location.href='search.html'">
-                <i class="fa fa-search fa-5x"></i>
-                <BR>
-                <h4>SEARCH</h4>
-            </div>
-            <div class="col-xs-6 padding" onclick="location.href='view-cart.html'">
-                <i class="fa fa-shopping-cart fa-5x" aria-hidden="true"></i>
-                <BR>
-                <h4>VIEW CART</h4>
-            </div>
-            <div class="col-xs-6 ghostWhite padding" onclick="location.href='contact-us.html'">
-                <i class="fa fa-compass fa-5x"></i><BR>
-                <h4>CONTACT US</h4>
-
-            </div>
-        </div>
     </div>
+        <div class="row whiteBack" >
+            <div class="col-md-12" id="load-container">
+
+            </div>
+
+        </div>
+
 
 
 </div>
@@ -135,6 +112,5 @@
     }
 </style>
 <script>
-
-
+    Navigation.HomePage();
 </script>

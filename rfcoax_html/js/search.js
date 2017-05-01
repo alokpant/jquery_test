@@ -101,7 +101,7 @@ class Search {
                 //console.log(connectorList);
                 LengthMatchArray = LengthMatchArray+"<option value='"+(lengthList.id)+"'>"+(lengthList.length_title)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="phase_mat">Unit Of Measure <small>*</small></label><select name="phase_mat" class="form-control" id="phase_mat">' + LengthMatchArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="lengthList">Unit Of Measure <small>*</small></label><select name="lengthList" class="form-control" id="lengthList">' + LengthMatchArray + '</select></div>');
 
 
             $.each(response["phaseMatchList"], function(ind, phaseMatchList) {
@@ -129,7 +129,15 @@ class Search {
     FormGenerator(){
         var id;
 
-        var connectorsArray         = '';
+        var connector2Check         = '';
+        var connector1Check         = '';
+        var cableCheck              = '';
+        var lengthCheck             = '';
+        var phaseCheck              = '';
+        var testCheck              = '';
+
+        var connectorsArray1        = '';
+        var connectorsArray2        = '';
         var cableArray              = '';
         var PhaseMatchArray         = '';
         var LengthMatchArray        = '';
@@ -141,7 +149,7 @@ class Search {
         var data = $('#form').serialize().split("&");
         var diameter_cable = $("#submit_frm").attr('diameter_uuid_val');
 
-        //console.log(data);
+        console.log(data);
 
         //console.log(diameter_cable);
 
@@ -156,13 +164,16 @@ class Search {
         }
 
 
-        var cable_name  = obj.cable_name;
-        var connector_1 = obj.connector_1;
-        var connector_2 = obj.connector_2;
-        var diameter_cable = obj.diameter_cable;
-        var length_dia = obj.length_dia;
-        var phase_mat = obj.phase_mat;
-        var test_data_val = obj.test_data_val;
+        console.log(obj);
+
+        var cable_name          = obj.cable_name;
+        var connector_1         = obj.connector_1;
+        var connector_2         = obj.connector_2;
+        var diameter_cable      = obj.diameter_cable;
+        var length_dia          = obj.length_dia;
+        var phase_mat           = obj.phase_mat;
+        var lengthList          = obj.lengthList;
+        var test_data_val       = obj.test_data_val;
 
         if(diameter_cable==0){
             var checked                 = 'checked';
@@ -197,16 +208,41 @@ class Search {
 
             $.each(response["connectorList"], function(ind, connectorList) {
                 //console.log(connectorList);
-                connectorsArray = connectorsArray+"<option value='"+(connectorList.id)+"' "+(connectorList.id==connector_1)?' selected':''+">"+(connectorList.connector_name)+"</option>";
+                if(connectorList.id==connector_1){
+                    connector1Check = "selected";
+                }else{
+                    connector1Check = "";
+                }
+
+                connectorsArray1 = connectorsArray1+"<option value='"+(connectorList.id)+"' "+connector1Check+">"+(connectorList.connector_name)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="connector_1">Connector 1  <small>*</small></label><select name="connector_1" class="form-control" id="connector_1">' + connectorsArray + '</select></div>');
-            form_param = form_param+('<div class="form-group"><label for="connector_2">Connector 2  <small>*</small></label><select name="connector_2" class="form-control" id="connector_2">' + connectorsArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="connector_1">Connector 1  <small>*</small></label><select name="connector_1" class="form-control" id="connector_1">' + connectorsArray1 + '</select></div>');
+            $.each(response["connectorList"], function(ind, connectorList) {
+                if(connectorList.id==connector_2){
+                    connector2Check = "selected";
+                }else{
+                    connector2Check = "";
+                }
+                connectorsArray2 = connectorsArray2+"<option value='"+(connectorList.id)+"' "+connector2Check+">"+(connectorList.connector_name)+"</option>";
+            });
+
+            form_param = form_param+('<div class="form-group"><label for="connector_2">Connector 2  <small>*</small></label><select name="connector_2" class="form-control" id="connector_2">' + connectorsArray2 + '</select></div>');
 
 
             $.each(response["cableList"], function(ind, cableList) {
                 //console.log(connectorList);
-                cableArray = cableArray+"<option value='"+(cableList.id)+"'>"+(cableList.cable_name)+"</option>";
+                if(cableList.id==cable_name){
+                    cableCheck = "selected";
+                }else{
+                    cableCheck = "";
+                }
+                cableArray = cableArray+"<option value='"+(cableList.id)+"' "+cableCheck+">"+(cableList.cable_name)+"</option>";
             });
+
+            var diameter_cable = obj.diameter_cable;
+            var length_dia = obj.length_dia;
+            var phase_mat = obj.phase_mat;
+            var test_data_val = obj.test_data_val;
 
 
             form_param = form_param+('<div class="form-group"><label for="cable_name">Cable Type  <small>*</small></label><select name="cable_name" class="form-control" id="cable_name">' + cableArray + '</select></div>');
@@ -214,20 +250,39 @@ class Search {
 
             $.each(response["lengthList"], function(ind, lengthList) {
                 //console.log(connectorList);
-                LengthMatchArray = LengthMatchArray+"<option value='"+(lengthList.id)+"'>"+(lengthList.length_title)+"</option>";
+
+                if(lengthList.id==lengthList){
+                    lengthCheck = "selected";
+                }else{
+                    lengthCheck = "";
+                }
+
+                LengthMatchArray = LengthMatchArray+"<option value='"+(lengthList.id)+"' "+lengthCheck+">"+(lengthList.length_title)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="phase_mat">Unit Of Measure <small>*</small></label><select name="phase_mat" class="form-control" id="phase_mat">' + LengthMatchArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="phase_mat">Unit Of Measure <small>*</small></label><select name="lengthList" class="form-control" id="lengthList">' + LengthMatchArray + '</select></div>');
 
 
             $.each(response["phaseMatchList"], function(ind, phaseMatchList) {
                 //console.log(connectorList);
-                PhaseMatchArray = PhaseMatchArray+"<option value='"+(phaseMatchList.id)+"'>"+(phaseMatchList.phase_type)+"</option>";
+                if(phaseMatchList.id==phase_mat){
+                    phaseCheck = "selected";
+                }else{
+                    phaseCheck = "";
+                }
+
+                PhaseMatchArray = PhaseMatchArray+"<option value='"+(phaseMatchList.id)+"' "+phaseCheck+">"+(phaseMatchList.phase_type)+"</option>";
             });
             form_param = form_param+('<div class="form-group"><label for="phase_mat">Phase Matching  <small>*</small></label><select name="phase_mat" class="form-control" id="phase_mat">' + PhaseMatchArray + '</select></div>');
 
             $.each(response["testData"], function(ind, testData) {
                 //console.log(connectorList);
-                DataMatchArray = DataMatchArray+"<option value='"+(testData.id)+"'>"+(testData.test_data_title)+"</option>";
+                if(testData.id==test_data_val){
+                    testCheck = "selected";
+                }else{
+                    testCheck = "";
+                }
+
+                DataMatchArray = DataMatchArray+"<option value='"+(testData.id)+"' "+testCheck+">"+(testData.test_data_title)+"</option>";
             });
             form_param = form_param+('<div class="form-group"><label for="test_data_val">Test Data  <small>*</small></label><select name="test_data_val" class="form-control" id="test_data_val">' + DataMatchArray + '</select></div>');
             form_param = form_param+('<div class="form-group"><input type="button" onclick="SearchAPI.FormGenerator();" name="submit_frm" id="submit_frm" value="Submit" class="btn btn-success" />&nbsp;<input type="submit" name="res" id="res" value="Clear" class="btn btn-default" /></div></form>')

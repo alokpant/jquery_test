@@ -1,0 +1,30 @@
+<script>
+    SearchAPI.LoadFormList(0);
+</script>
+    <div style="padding:10px;">
+      <div class="col-md-12">
+          <div class="btn-group">
+              <a href="index.html">
+                  <i class="fa fa-angle-left fa-3x" aria-hidden="true"></i>
+              </a>
+          </div>
+          <div>&nbsp;</div>
+          <div class="input-group">
+              <input name="search" id='search' class="form-control" type="text" value="" placeholder="Enter Part Number">
+              <span class="input-group-btn">
+                <button class="btn btn-danger" onclick="SearchAPI.SearchReverSe()">Model Search</button>
+                <input type="hidden" name='search_form' id='search_form' value="SEARCH_FUNCTION" />
+                </span>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12" id="search_result">test
+             </div>
+
+
+              <div class="col-md-12" id="search_result_array">
+              </div>
+          </div>
+        </div>
+    </div>

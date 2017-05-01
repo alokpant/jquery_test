@@ -8,3 +8,4 @@
   var url = 'https://rfcoax.com/mobile-application/';
   var form_attribute;
   var incoming_data;
+  var localurl = 'https://rfcoax.com/mobile-application/api-calls/';
