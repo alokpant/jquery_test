@@ -12,5 +12,5 @@
 
   var localurl = 'api-calls/';
 
-  
+
   var api_urls = 'https://rfcoax.com/mobile-application/api-';

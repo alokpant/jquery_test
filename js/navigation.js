@@ -31,6 +31,7 @@ class Navigation {
 
     }
 
+
     OrderWithQuote(){
 
     }
@@ -39,6 +40,39 @@ class Navigation {
         $.ajax({
             type          : "POST",
             url           : localurl+'getContactUs.html',
+            contentType   : "application/x-www-form-urlencoded;"
+        }).done(function(response){
+
+            $("#load-container").html(response);
+        });
+    }
+
+    SignInOnly(){
+        $.ajax({
+            type          : "POST",
+            url           : localurl+'getLogin.html',
+            contentType   : "application/x-www-form-urlencoded;"
+        }).done(function(response){
+
+            $("#load-container").html(response);
+        });
+    }
+
+    SignUpOnly(){
+        $.ajax({
+            type          : "POST",
+            url           : localurl+'getRegister.html',
+            contentType   : "application/x-www-form-urlencoded;"
+        }).done(function(response){
+
+            $("#load-container").html(response);
+        });
+    }
+
+    ForgotPassword(){
+        $.ajax({
+            type          : "POST",
+            url           : localurl+'getForgotPassword.html',
             contentType   : "application/x-www-form-urlencoded;"
         }).done(function(response){
 
