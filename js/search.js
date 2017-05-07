@@ -109,14 +109,14 @@ class Search {
                 //console.log(connectorList);
                 PhaseMatchArray = PhaseMatchArray+"<option value='"+(phaseMatchList.id)+"'>"+(phaseMatchList.phase_type)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="phase_mat">Phase Matching  <small>*</small></label><select name="phase_mat" class="form-control" id="phase_mat">' + PhaseMatchArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="phase_mat">Phase Matching  <small>*</small></label><select name="phase_mat" class="form-control" id="phase_mat"><option value="-23">None</option>' + PhaseMatchArray + '</select></div>');
 
 
             $.each(response["jacketList"], function(ind, jacketList) {
                 //console.log(connectorList);
                 JacketArray = JacketArray+"<option value='"+(jacketList.id)+"'>"+(jacketList.jacket_type)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="jacket_type">Jacket <small>*</small></label><select name="jacket_type" class="form-control" id="jacket_type">' + JacketArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="jacket_type">Jacket <small>*</small></label><select name="jacket_type" class="form-control" id="jacket_type"><option value="-23">None</option>' + JacketArray + '</select></div>');
 
             $.each(response["testData"], function(ind, testData) {
                 //console.log(connectorList);
@@ -362,7 +362,9 @@ class Search {
             technical_spec = technical_spec+'<div><strong>Part Number:</strong> '+PartNumber+'</div>';
             technical_spec = technical_spec+'<div><strong>Description:</strong> '+Description+'</div>';
             technical_spec = technical_spec+'<div><strong>Price:</strong> '+Description+'</div>';
-
+            technical_spec = technical_spec+'<div><strong>Manufacturing Lead Time:</strong> Most orders <7 business days. Large orders of 100+ units total may be 2-3 weeks. Parts are always in stock to build any order quantity.</div>';
+            technical_spec = technical_spec+'<div><strong>NOTE:</strong> All prices are per EACH cable.</div>';
+            technical_spec = technical_spec+'<div><strong>NOTE:</strong> All prices are per EACH cable.</div>';
             $("#search_result_array").html(technical_spec);
 
         });
@@ -460,7 +462,7 @@ class Search {
                 //console.log(connectorList);
                 JacketArray = JacketArray+"<option value='"+(jacketList.id)+"' "+jacketCheck+">"+(jacketList.jacket_type)+"</option>";
             });
-            form_param = form_param+('<div class="form-group"><label for="jacket_type">Jacket <small>*</small></label><select name="jacket_type" class="form-control" id="jacket_type">' + JacketArray + '</select></div>');
+            form_param = form_param+('<div class="form-group"><label for="jacket_type">Jacket <small>*</small></label><select name="jacket_type" class="form-control" id="jacket_type"><option value="-23">None</option>' + JacketArray + '</select></div>');
 
 
             $.each(response["testData"], function(ind, testData) {
